@@ -2,6 +2,8 @@
 
 ## Git branches
 
+**Start every issue’s work from `main`:** `git checkout main && git pull`, then create a branch — do not pile commits on `main` unless the user explicitly requests it.
+
 Work tied to a GitHub issue should use:
 
 `feature/issue-<issue-number>-<short-kebab-description>`
