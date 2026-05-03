@@ -10,7 +10,7 @@ Executive summary and community patterns (DLL vs proxy CLI, RTE deployment): [do
 ## Native stdio helper (`lv_stdio`)
 Experimental shared library (`std::cout` / `std::cerr` via `extern "C"`) for validating CLI-style output when loaded from LabVIEW — see [native/lv_stdio](native/lv_stdio).
 
-Build (after `pip install -r requirements-build.txt` in a venv so `cmake` and `ninja` are on `PATH`):
+**CMake + Ninja** (after `pip install -r requirements-build.txt` so `cmake` / `ninja` are on `PATH`):
 
 ```bash
 cd native/lv_stdio
@@ -18,4 +18,13 @@ cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
 cmake --build build
 ```
 
-On **macOS** the artifact is `build/liblv_stdio.dylib`; on **Linux** `build/liblv_stdio.so`; on **Windows** `build/Release/lv_stdio.dll` (or `build/lv_stdio.dll` depending on generator).
+**Make** (macOS / Linux only; no extra Python deps):
+
+```bash
+cd native/lv_stdio
+make
+```
+
+Use `make clean` to remove `native/lv_stdio/build/`.
+
+On **macOS** the artifact is `build/liblv_stdio.dylib`; on **Linux** `build/liblv_stdio.so`; on **Windows** use CMake — `Makefile` targets Unix-like toolchains only.
