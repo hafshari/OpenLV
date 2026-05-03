@@ -1,0 +1,27 @@
+---
+description: Git branch naming tied to GitHub issues for this repo
+alwaysApply: true
+---
+
+# Git branches
+
+When creating a branch for tracked work (features, fixes, chores tied to an issue), use:
+
+```text
+feature/issue-<number>-<short-kebab-description>
+```
+
+Examples:
+
+- `feature/issue-2-git-lfs-labview-hygiene`
+- `feature/issue-14-parse-vi-cache`
+
+Rules:
+
+- **`<number>`** — GitHub issue number (required when an issue exists).
+- **`<short-kebab-description>`** — a few words, lowercase, hyphens; matches the issue title intent.
+- For **bugfixes** tied to an issue, prefer `fix/issue-<num>-<description>`.
+
+Do not use vague names like `feature/update` or `wip` when an issue number applies.
+
+If there is **no** GitHub issue yet, either open one first or use a temporary branch name and rename after creating the issue.
