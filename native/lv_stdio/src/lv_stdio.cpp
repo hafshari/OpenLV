@@ -1,10 +1,12 @@
 #include <iostream>
 
+#include "lv_stdio.h"
+
 /**
  * Shared library for LabVIEW Call Library Function Node testing:
  * writes text to the host process's stdout/stderr using std::cout / std::cerr.
  *
- * macOS: liblv_stdio.dylib — Linux: liblv_stdio.so — Windows: lv_stdio.dll
+ * macOS: liblv_stdio.dylib / .bundle / lv_stdio.framework — Linux: .so — Windows: .dll
  */
 
 #ifdef _WIN32

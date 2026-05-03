@@ -28,3 +28,27 @@ make
 Use `make clean` to remove `native/lv_stdio/build/`.
 
 On **macOS** the artifact is `build/liblv_stdio.dylib`; on **Linux** `build/liblv_stdio.so`; on **Windows** use CMake — `Makefile` targets Unix-like toolchains only.
+
+### macOS: `.bundle` and `.framework` (LabVIEW *Import Shared Library*)
+
+Header for the wizard: [`native/lv_stdio/include/lv_stdio.h`](native/lv_stdio/include/lv_stdio.h).
+
+**Make** (from `native/lv_stdio`):
+
+```bash
+make bundle      # → build/liblv_stdio.bundle (MH_BUNDLE)
+make framework   # → build/lv_stdio.framework/ (Versions/A, Headers, symlinks)
+make macos-all   # dylib + bundle + framework
+```
+
+**CMake** (also emits `build/lv_stdio.framework` on Apple when you build the `lv_stdio_framework` target):
+
+```bash
+cmake -S . -B build -G Ninja -DCMAKE_BUILD_TYPE=Release
+cmake --build build --target lv_stdio_framework
+# Framework: build/lv_stdio.framework
+```
+
+Quick symbol check: `nm -gU build/liblv_stdio.bundle | grep lv_stdio`
+
+**Note:** Prefer **`.bundle`** for a single file; use **`.framework`** when you want the standard macOS layout. Local dev typically needs **no code signing**; gatekeeper is a separate concern for distribution.

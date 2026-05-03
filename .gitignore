@@ -1,6 +1,7 @@
 # Machine-local LabVIEW paths (regenerated per machine)
 *.aliases
 *.lvlps
+.DS_Store
 
 # CMake build trees (native helpers)
 native/**/build/
