@@ -1,5 +1,7 @@
 # LabVIEW EXE: stdio, native helpers, and runtime — executive summary
 
+Supports implementation planning for [#5](https://github.com/hafshari/OpenLV/issues/5) (echo sample / CLI-style output).
+
 This document summarizes a cross-platform investigation (Windows, Linux, macOS) for OpenLV: **no-UI** builds, **stdout/stderr**, **DLL/shared-library** helpers, and **LabVIEW Run-Time Engine (RTE)** deployment. It refines the idea “put all console I/O in a DLL and call it from LabVIEW” and records **how practitioners usually solve** the same problems.
 
 ---
