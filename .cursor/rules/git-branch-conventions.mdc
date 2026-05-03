@@ -5,6 +5,12 @@ alwaysApply: true
 
 # Git branches
 
+## Workflow (always)
+
+1. **`git checkout main`** (or `master` if that is the default — here it is **`main`**).
+2. **`git pull`** so you branch from the latest **`origin/main`**.
+3. **Create the issue branch** with the naming pattern below — **do not** commit issue-related work directly on `main` unless the user explicitly asks.
+
 When creating a branch for tracked work (features, fixes, chores tied to an issue), use:
 
 ```text
