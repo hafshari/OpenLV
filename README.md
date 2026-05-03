@@ -3,3 +3,6 @@ OpenLV converts LabVIEW VIs into a textual model and AST using VI Scripting, ena
 
 ## Cloning
 LabVIEW VIs are stored with [Git LFS](https://git-lfs.com). After cloning, run `git lfs install` once, then `git lfs pull` if VIs are missing.
+
+## LabVIEW EXE / stdout / runtime (cross-platform notes)
+Executive summary and community patterns (DLL vs proxy CLI, RTE deployment): [docs/labview-exe-stdio-and-runtime.md](docs/labview-exe-stdio-and-runtime.md).

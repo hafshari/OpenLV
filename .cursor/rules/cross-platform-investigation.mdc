@@ -1,0 +1,14 @@
+---
+description: For LabVIEW/NI research, always cover Windows, Linux, and macOS
+alwaysApply: true
+---
+
+# Cross-platform investigation
+
+When **searching** or **reasoning** about behavior that can differ by environment (LabVIEW built EXEs, runtimes, stdio/consoles, paths, drivers, Application Builder, deployment):
+
+1. **Treat all three OS families explicitly:** **Windows**, **Linux**, and **macOS** — search and summarize per platform; do not assume one answer applies everywhere.
+2. **Call out gaps:** If documentation or support is **Windows-only**, **Linux-only**, or **macOS is deprecated/Community-only** (e.g. current NI LabVIEW macOS policy), **state that** instead of silencing the third OS.
+3. **Prefer primary sources** per platform (NI docs, release notes, forums scoped to OS) before generic threads.
+
+This repo cares about portable correctness even when **macOS LabVIEW** is limited or historic — still document how things behave or *stopped being supported* there.
