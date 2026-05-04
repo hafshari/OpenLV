@@ -39,7 +39,6 @@ LV_STDIO_API void lv_stdio_write_stdout_nl(const char *text)
 {
     if (text != nullptr) {
         std::cout << text << std::endl;
-	exit(1);
     }
 }
 
