@@ -10,10 +10,12 @@ PARENT="${2:?usage: mkframework.sh <mach-o binary> <framework_parent_dir>}"
 FW="${PARENT}/lv_stdio.framework"
 A="${FW}/Versions/A"
 HDR_SRC="${ROOT}/include/lv_stdio.h"
+HDR_CLFN="${ROOT}/include/lv_stdio_clfn.h"
 
 rm -rf "${FW}"
 mkdir -p "${A}/Headers"
 cp "${HDR_SRC}" "${A}/Headers/lv_stdio.h"
+cp "${HDR_CLFN}" "${A}/Headers/lv_stdio_clfn.h"
 cp "${BIN}" "${A}/lv_stdio"
 chmod +x "${A}/lv_stdio"
 

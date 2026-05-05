@@ -9,7 +9,8 @@ INCDIR    := include
 BUILD_DIR := build
 SRC       := src/lv_stdio.cpp
 CXX       ?= c++
-CXXFLAGS  ?= -std=c++17 -O2 -Wall -fPIC -I$(INCDIR)
+# -fvisibility=hidden: only symbols marked LV_STDIO_API (default) export — avoids dead-strip ambiguity.
+CXXFLAGS  ?= -std=c++17 -O2 -Wall -fPIC -fvisibility=hidden -I$(INCDIR)
 
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)

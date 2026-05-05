@@ -12,8 +12,10 @@
 
 #ifdef _WIN32
 #define LV_STDIO_API __declspec(dllexport)
+#define LV_STDIO_NOINLINE __declspec(noinline)
 #else
 #define LV_STDIO_API __attribute__((visibility("default")))
+#define LV_STDIO_NOINLINE __attribute__((noinline))
 #endif
 
 extern "C" {
@@ -46,7 +48,11 @@ LV_STDIO_API void lv_stdio_write_stderr_nl(const char *text)
     }
 }
 
-LV_STDIO_API void lv_stdio_exit(int exit_code)
+/**
+ * Keep a stable exported symbol for LabVIEW/dlsym: hidden default visibility + explicit export,
+ * and noinline so LTO is unlikely to merge this away from its own dylib export entry.
+ */
+[[noreturn]] LV_STDIO_API LV_STDIO_NOINLINE void lv_stdio_exit(int exit_code)
 {
     std::exit(exit_code);
 }

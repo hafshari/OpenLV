@@ -109,4 +109,6 @@ Pick a strategy by **who consumes the output** and **OS**:
 - For **maximum portability** of “echo” for humans and CI: treat **G-CLI–style proxy** or **file-based** logging as first-class, and treat **in-process DLL `printf`** as an **optimization** that must be **validated per OS** (especially **Windows GUI EXE**).
 - For **deployment**, document the **exact RTE** and **install path** (installer vs Linux packages vs embedded macOS frameworks).
 
+**OpenLV `lv_stdio` (experimental):** The repo ships a small native helper under [`native/lv_stdio`](../native/lv_stdio) (see README, section *Native stdio helper* and *LabVIEW CLFN / Import Shared Library*). It uses **`lv_stdio_clfn.h`** for LabVIEW’s Import wizard, **`-fvisibility=hidden`** with explicit **`LV_STDIO_API`** exports, and **`noinline`** on **`lv_stdio_exit`** so symbols stay visible to **`dlsym`** / Call Library Function nodes.
+
 Related issues: [#4](https://github.com/hafshari/OpenLV/issues/4), [#5](https://github.com/hafshari/OpenLV/issues/5).

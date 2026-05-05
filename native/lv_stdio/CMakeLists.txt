@@ -4,6 +4,10 @@ project(lv_stdio LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Non-API symbols stay hidden; only LV_STDIO_API exports (stable exports for CLFN/dlsym).
+set(CMAKE_CXX_VISIBILITY_PRESET hidden)
+set(CMAKE_VISIBILITY_INLINES_HIDDEN ON)
+
 add_library(lv_stdio SHARED src/lv_stdio.cpp)
 target_include_directories(lv_stdio
   PUBLIC
@@ -28,7 +32,7 @@ if(APPLE)
     FRAMEWORK TRUE
     FRAMEWORK_VERSION A
     MACOSX_FRAMEWORK_IDENTIFIER com.openlv.lv_stdio
-    PUBLIC_HEADER include/lv_stdio.h
+    PUBLIC_HEADER "include/lv_stdio.h;include/lv_stdio_clfn.h"
     OUTPUT_NAME lv_stdio
     POSITION_INDEPENDENT_CODE ON
   )
