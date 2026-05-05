@@ -21,6 +21,12 @@ void lv_stdio_write_stdout_nl(const char *text);
 /** Write text to stderr followed by a newline. */
 void lv_stdio_write_stderr_nl(const char *text);
 
+/**
+ * End the current process with the given exit status (0 = success, non-zero = error).
+ * This calls the C runtime `exit` and will terminate the whole host (e.g. LabVIEW or your built EXE), not just the diagram.
+ */
+void lv_stdio_exit(int exit_code);
+
 #ifdef __cplusplus
 }
 #endif

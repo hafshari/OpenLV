@@ -1,10 +1,7 @@
+#include <cstdlib>
 #include <iostream>
 
 #include "lv_stdio.h"
-
-#include <cstdio>
-#include <cstdlib>
-#include <unistd.h>
 
 /**
  * Shared library for LabVIEW Call Library Function Node testing:
@@ -47,6 +44,11 @@ LV_STDIO_API void lv_stdio_write_stderr_nl(const char *text)
     if (text != nullptr) {
         std::cerr << text << std::endl;
     }
+}
+
+LV_STDIO_API void lv_stdio_exit(int exit_code)
+{
+    std::exit(exit_code);
 }
 
 } // extern "C"
