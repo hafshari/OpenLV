@@ -76,6 +76,34 @@ On one developer machine used for OpenLV:
 
 ---
 
+## VI Package Configuration (`.vipc`)
+
+A **`.vipc`** file is a **VI Package Configuration**: VIPM uses it to record **which VI Packages** (and typically **which versions**) a **LabVIEW project** depends on. It supports handing projects between machines, scanning a project for dependencies, and **pinning** packages so scans do not drop them. VIPCs are usually kept **next to the project** and **committed to Git**.
+
+- **JKI guide:** [How to use VI Package Configurations (VIPC)](https://support.vipm.io/hc/en-us/articles/214135883-How-to-use-VI-Package-Configurations-VIPC)
+- **CLI:** `vipm install path/to/project.vipc` installs packages listed in that file ([CLI command reference](https://docs.vipm.io/latest/cli/command-reference/)).
+
+Think of **`.vipc`** as the **long-standing, GUI-centric** dependency format for VIPM; **`vipm.toml`** (below) is the **newer text-first** manifest where Preview VIPM supports it.
+
+---
+
+## `vipm.toml` and `vipm.lock` (Preview)
+
+JKI documents **`vipm.toml`** as a human-readable manifest for **project metadata**, **dependencies**, optional **dev-dependencies**, and optional **build** specs. It can **replace or complement** **`.vipc`** and **`.dragon`** files.
+
+| File | Role |
+|------|------|
+| **`vipm.toml`** | **You** edit this: intended versions, project LabVIEW year/bitness, dependency IDs with version constraints (e.g. `oglib_array = "6.0.1.20"`). Created/updated with commands such as `vipm init`, `vipm add`, `vipm remove`. |
+| **`vipm.lock`** | **Auto-generated** by VIPM. Records **resolved** versions for **direct and transitive** packages, checksums, sources — similar in spirit to lockfiles in other ecosystems. **Do not hand-edit.** Refresh with `vipm lock`; use **`vipm lock --check`** in CI (exit `0` = lock in sync with `vipm.toml`). |
+
+**Pinning:** declare explicit versions in **`vipm.toml`** (or `vipm add pkg@x.y.z`). Using `vipm add pkg` without a version may resolve **latest** from the repository — fine for experiments, weaker for reproducible CI.
+
+**Requirements:** JKI states **`vipm.toml`** needs **VIPM Desktop 2026 Q1 Preview or later** (Preview feature; not necessarily available in older stable VIPM). See [Getting Started with vipm.toml](https://docs.vipm.io/latest/vipm-toml/getting-started/).
+
+**macOS note:** Until a Mac build ships the Preview **`vipm`** CLI, **`vipm.toml` workflows are impractical on macOS** from that host; use **`.vipc` + GUI VIPM** or another OS with Preview CLI for lockfile-driven flows.
+
+---
+
 ## Related reading
 
 - OpenLV executive summary (EXE, stdio, RTE): [labview-exe-stdio-and-runtime.md](labview-exe-stdio-and-runtime.md)
