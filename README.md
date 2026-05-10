@@ -7,6 +7,9 @@ LabVIEW VIs are stored with [Git LFS](https://git-lfs.com). After cloning, run `
 ## LabVIEW EXE / stdout / runtime (cross-platform notes)
 Executive summary and community patterns (DLL vs proxy CLI, RTE deployment): [docs/labview-exe-stdio-and-runtime.md](docs/labview-exe-stdio-and-runtime.md).
 
+## VIPM CLI (research)
+VIPM CLI docs summary, macOS vs Preview installers, Homebrew/Docker notes, and upstream requests: [docs/vipm-cli-research.md](docs/vipm-cli-research.md).
+
 ## Native stdio helper (`lv_stdio`)
 Experimental shared library (`std::cout` / `std::cerr` via `extern "C"`) for validating CLI-style output when loaded from LabVIEW — see [native/lv_stdio](native/lv_stdio).
 
